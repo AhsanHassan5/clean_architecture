@@ -1,4 +1,4 @@
-import 'barel.dart';
+import 'utils/barel.dart';
 
 void main() {
   runApp(const MyApp());
