@@ -1,3 +1,5 @@
+
+
 import 'utils/barel.dart';
 
 void main() {
@@ -56,10 +58,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: OverflowBar(
+        children: [
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(width: 20),
+          FloatingActionButton(
+            onPressed:
+                () => Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => ButtonPage())),
+            tooltip: 'Move',
+            child: const Icon(Icons.arrow_forward_ios_outlined),
+          ),
+        ],
       ),
     );
   }
