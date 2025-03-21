@@ -1,7 +1,3 @@
-import 'package:clean_architecture_button/features/data/bt_repo.dart';
-import 'package:clean_architecture_button/features/presentation/state_management/bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'utils/barel.dart';
 
 void main() {
