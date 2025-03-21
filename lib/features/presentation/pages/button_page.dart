@@ -1,6 +1,3 @@
-
-
-
 import '../../../utils/barel.dart';
 
 class ButtonPage extends StatefulWidget {
@@ -14,7 +11,7 @@ class _ButtonPageState extends State<ButtonPage> {
   void increment() {
     context.read<TextBloc>().add(ShowText());
   }
-
+  final double _textSize = 18;
   late BtCall btCall;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +28,7 @@ class _ButtonPageState extends State<ButtonPage> {
               } else if (state is LoadedState) {
                 return Text(
                   state.text,
-                  style: TextStyle(fontSize: 18, color: Colors.blue),
+                  style: TextStyle(fontSize: _textSize, color: Colors.blue),
                 );
               } else {
                 return const ErrorWidgett();

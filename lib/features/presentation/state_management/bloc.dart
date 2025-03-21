@@ -9,7 +9,7 @@ class TextBloc extends Bloc<TextEvent, TextState> {
         final text = await btCall.call();
         emit(LoadedState(text));
       } else {
-        Text('fuck');
+        Text('Error Buddy');
       }
     });
   }
