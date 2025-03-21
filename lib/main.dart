@@ -1,4 +1,6 @@
-
+import 'package:clean_architecture_button/features/data/bt_repo.dart';
+import 'package:clean_architecture_button/features/presentation/state_management/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'utils/barel.dart';
 
@@ -11,12 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return BlocProvider(
+      create: (context) => TextBloc(BtCall(ButtonImpl())),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -68,9 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(width: 20),
           FloatingActionButton(
             onPressed:
-                () => Navigator.of(
-                  context,
-                ).push(MaterialPageRoute(builder: (context) => ButtonPage())),
+                () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder:
+                        (context) => BlocProvider.value(
+                          value: context.read<TextBloc>(),
+                          child: const ButtonPage(),
+                        ),
+                  ),
+                ),
             tooltip: 'Move',
             child: const Icon(Icons.arrow_forward_ios_outlined),
           ),
